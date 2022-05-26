@@ -1,0 +1,26 @@
+.tab{
+	-fx-pref-width : 345
+	;
+	-fx-pref-height : 40;
+}
+.tab-header-background{
+	-fx-background-color :#00C4A7
+;
+}
+.jfx-tab-pane .tab-selected-line{
+	-fx-border-color : rgb(255, 255, 255);
+}
+
+.jfx-text-field
+{
+    -jfx-focus-color: #4eb769;
+}
+
+.text-field
+{
+    -fx-prompt-text-fill: rgb(255, 255, 255); /*Yellow - floating label*/
+    -fx-text-fill: rgb(255, 255, 255); /*Yellow - input color*/
+    -fx-highlight-fill: #4eb769; /*Green*/
+    
+    
+}

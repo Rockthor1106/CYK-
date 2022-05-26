@@ -1,0 +1,45 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+GNFC:
+	w+=(Simple)(w+=Simple)* //W is the string which will be analyzed by CYK
+	init=Initial productions+=Production*
+;
+
+Initial:
+	left='S' '->' rigth+=(Rigth)('|' + rigth+=Rigth)*
+;
+
+//Lambda:
+//	{Rigth} rigth= '_' | Rigth
+//;
+
+Production:
+	left=NonTerminal '->' rigth+=(Rigth)('|' + rigth+=Rigth)*
+;
+
+Rigth: 
+	simple=Simple | binary=Binary
+;
+
+Simple:
+	{Simple}alpha= ('a'|'b'|'c'|'d'|'e'|'f'|'g'|'h'|'i'|'j'|'k'|'l'|
+	'm'|'n'|'o'|'p'|'q'|'r'|'s'|'t'|'v'|'w'|'x'|'y'|'z')
+;
+
+NonTerminal:
+	{NonTerminal}var=('A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|
+	'M'|'N'|'O'|'P'|'Q'|'R'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z')
+;
+
+//Rigth: Sample;
+//
+//Sample returns  Rigth:
+//{Simple} alpha= 'a'|'b'|'c'|'d'|'e'|'f'|'g'|'h'|'i'|'j'|'k'
+//{Binary} first=NonTerminal second=NonTerminal
+//;
+
+Binary:
+	{Binary}(first=NonTerminal second=NonTerminal)
+;
